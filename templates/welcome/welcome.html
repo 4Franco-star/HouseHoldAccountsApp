@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p><a href="{% url 'post:all' %}">{{ user.username }}さんのページ</a></p>
+{% endif %}
+{% endblock %}

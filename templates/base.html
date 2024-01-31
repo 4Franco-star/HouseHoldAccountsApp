@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}HouseHoldAccountsApp{% endblock %}</title>
+  </head>
+
+  <body>
+    <!-- header  -->
+    <header class="mb-3">
+      <nav>
+        <ul>
+          <li><a href="{% url 'welcome:welcome' %}">家計簿アプリ</a></li>
+          <li><a href="{% url 'accounts:signup' %}">ユーザー登録</a></li>
+          <li><a href="{% url 'accounts:login' %}">ログイン</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- /header  -->
+
+    <!-- main  -->
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+    <!-- /main  -->
+  </body>
+
+</html>
