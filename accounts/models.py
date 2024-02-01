@@ -11,9 +11,9 @@ class MyUserManager(BaseUserManager):
             raise ValueError("メールアドレスは必須です。")
         user = self.model(
             username=username,
-            email = self.normalize_email(email),
+            email=self.normalize_email(email),
             date_of_birth=date_of_birth,
-            )
+        )
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -23,9 +23,9 @@ class MyUserManager(BaseUserManager):
             raise ValueError("メールアドレスは必須です。")
         user = self.model(
             username=username,
-            email = self.normalize_email(email),
+            email=self.normalize_email(email),
             date_of_birth=date_of_birth,
-            )
+        )
         user.is_staff = True
         user.is_superuser = True
         user.set_password(password)
