@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 119
+extend-exclude = .venv/,venv/,**/migrations/*,manage.py,asgi.py,wsgi.py
+extend-ignore = E203,W503,W504
