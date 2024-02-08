@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-rmz@nn(qsy$^74f!kb+$bq)d7t=r_i=*0g_xg0cno4o#kd=^#t"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'bootstrap4',
+    "betterforms",
     "accounts",
     "post",
     "welcome",
@@ -66,11 +68,14 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            'builtins':[
+                'bootstrap4.templatetags.bootstrap4',
+            ],
         },
     },
 ]
 
-LOGIN_REDIRECT_URL = "post:all"
+LOGIN_REDIRECT_URL = "post:Income_all"
 LOGOUT_REDIRECT_URL = "accounts:login"
 
 WSGI_APPLICATION = "top.wsgi.application"
@@ -128,3 +133,16 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SQL_DEBUG = True
+
+if SQL_DEBUG:
+
+    def show_toolbar(request):
+        return True
+
+    INSTALLED_APPS += ("debug_toolbar",)
+    MIDDLEWARE += ("debug_toolbar.middleware.DebugToolbarMiddleware",)
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+    }

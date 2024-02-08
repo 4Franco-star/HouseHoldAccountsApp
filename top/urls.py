@@ -7,3 +7,12 @@ urlpatterns = [
     path("", include("welcome.urls")),
     path("post/", include("post.urls")),
 ]
+
+from django.conf import settings
+
+if settings.SQL_DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ]
