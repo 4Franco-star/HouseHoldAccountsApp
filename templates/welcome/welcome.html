@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p><a href="{% url 'post:all' %}">{{ user.username }}さんのページ</a></p>
+<p><a href="{% url 'post:Income_all' %}">{{ user.username }}さんのページ</a></p>
 <form method="post" action="{% url 'accounts:logout' %}">
   {% csrf_token %}
   <button type="submit">ログアウト</button>

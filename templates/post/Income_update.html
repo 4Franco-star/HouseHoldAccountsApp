@@ -1,0 +1,8 @@
+<form method="post">
+    <h2>収入編集フォーム</h2>
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">編集</button>
+</form>
+<br>
+<a href="{% url 'post:Income_all' %}">戻る</a>

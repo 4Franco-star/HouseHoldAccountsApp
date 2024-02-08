@@ -1,0 +1,25 @@
+<h1>収入支出フォーム</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="form1 mb-5">
+    <h2>収入フォーム</h2>
+    {% for field in form.Income %}
+    <div class="form-group">
+      {{ field.label }}
+      {{ field }}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="form2">
+    <h2>支出フォーム</h2>
+    {% for field in form.Expense %}
+    <div class="form-group">
+      {{ field.label }}
+      {{ field }}
+    </div>
+    {% endfor %}
+  </div>
+  <button type="submit" class="btn btn-primary">登録する</button>
+</form>
+<br>
+<a href="{% url 'post:Income_all' %}">戻る</a>

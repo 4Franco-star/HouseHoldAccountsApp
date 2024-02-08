@@ -1,0 +1,9 @@
+<form method="post">
+    <h2>以下の収入の登録を本当に削除しますか？</h2>
+    <p>{{ income }}</p>
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">削除</button>
+    </form>
+    <br>
+    <a href="{% url 'post:Income_all' %}">戻る</a>

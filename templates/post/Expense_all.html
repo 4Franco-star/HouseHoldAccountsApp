@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Post_Expense_All{% endblock %}
+
+{% block content %}
+<form method="post" action="{% url 'accounts:logout' %}">
+    {% csrf_token %}
+    <button type="submit">ログアウト</button>
+</form>
+{% if user.is_authenticated %}
+<p>{{ request.user }}さん、こんにちは</p>
+<a href="{% url 'post:create' %}">収支登録</a>
+<a href="{% url 'post:Income_all' %}">収入一覧</a>
+{% endif %}
+
+<h3>支出一覧</h3>
+{% for expense in expenses %}
+{% if expense.user == request.user %}
+<h4>{{ request.user }}</h4>
+<li>開  始  日：{{ expense.start_date }}</li>
+<li>終  了  日：{{ expense.end_date }}</li>
+<li>カテゴリー：{{ expense.category }}</li>
+<li>支  出  額：{{ expense.amount }}万円</li>
+<a href="{% url 'post:Expense_delete' expense.pk %}">削除</a>
+<a href="{% url 'post:Expense_update' expense.pk %}">編集</a>
+{% endif %}
+{% empty %}
+<li>まだ収支登録が1件もされていません。</li>
+{% endfor %}
+{% include 'post/pagination.html' %}
+{% endblock %}
